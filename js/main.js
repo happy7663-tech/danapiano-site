@@ -38,6 +38,23 @@
     });
   });
 
+  // 방문자 카운터 (같은 브라우저는 하루 1번만 셈)
+  var box = document.getElementById('visit');
+  if (box && window.fetch) {
+    var d = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+    var seen = false;
+    try { seen = localStorage.getItem('danapiano-visit') === d; } catch (e) {}
+    fetch('/api/visit', { method: seen ? 'GET' : 'POST', cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function (v) {
+        document.getElementById('visit-today').textContent = v.today.toLocaleString('ko-KR');
+        document.getElementById('visit-total').textContent = v.total.toLocaleString('ko-KR');
+        box.hidden = false;
+        try { localStorage.setItem('danapiano-visit', d); } catch (e) {}
+      })
+      .catch(function () {});
+  }
+
   // 연도
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

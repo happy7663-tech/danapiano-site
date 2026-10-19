@@ -215,6 +215,8 @@ section { padding-block: 72px; }
 .site-footer .links { display: flex; gap: 16px; flex-wrap: wrap; }
 .site-footer .links a { color: var(--ink); }
 .site-footer p { margin: 0; }
+.site-footer .visit { font-variant-numeric: tabular-nums; }
+.site-footer .visit strong { color: var(--lilac); font-weight: 400; font-family: var(--font-display); }
 
 /* 모바일 하단 고정 상담 바 */
 .mobile-bar { display: none; }
