@@ -111,7 +111,7 @@ body::before {
 .btn-ghost { background: transparent; color: var(--ink); }
 .btn:hover { transform: translateY(-1px); }
 .hero-art { min-width: 0; }
-.hero-art svg { width: 100%; height: auto; display: block; }
+.hero-art img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,.18); }
 
 /* 건반 띠 (시그니처) */
 .keys-strip {
